@@ -1328,6 +1328,7 @@ WriteBatch* DBImpl::BuildBatchGroup(Writer** last_writer)
     // original write is small, limit the growth so we do not slow
     // down the small write too much.
     size_t max_size = 1 << 20;
+    // 1 << 10 = 1 kb
     if (size <= (128 << 10)) {
         max_size = size + (128 << 10);
     }
